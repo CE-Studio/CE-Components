@@ -1,2 +1,2 @@
 # CE-Components
-A collection of usefull parts for games
+A collection of useful parts for games
