@@ -1,5 +1,6 @@
-extends Node3D
+# Copyright 2026 CE-Studio: LGPL-3.0-only
 class_name DebugAABB
+extends Node3D
 
 
 ## Renders an AABB in-world for debug purposes

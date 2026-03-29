@@ -1,5 +1,6 @@
-extends MeshInstance2D
+# Copyright 2026 CE-Studio: LGPL-3.0-only
 class_name TransformedMeshInstance2D
+extends MeshInstance2D
 
 
 ## Allows a 3D mesh to be rendered in 2D situations without needing the usual workarounds.
@@ -67,28 +68,28 @@ func _recalc():
 	var surface_tool := SurfaceTool.new()
 	surface_tool.create_from(base_mesh,0)
 	var array_mesh := surface_tool.commit()
-	
+
 	xform = Transform3D()
-	
+
 	xform = xform.rotated(Vector3(0, 0, 1), deg_to_rad(x_rotation.z))
 	xform = xform.rotated(Vector3(1, 0, 0), deg_to_rad(x_rotation.x))
 	xform = xform.rotated(Vector3(0, 1, 0), deg_to_rad(x_rotation.y))
-	
+
 	xform = xform.scaled(x_scale)
-	
+
 	xform = xform.translated(x_position)
-	
+
 	var _tool = MeshDataTool.new()
 	err = _tool.create_from_surface(array_mesh, 0)
 	if err != OK:
 		mesh = ArrayMesh.new()
 		return
-	
+
 	for i in _tool.get_vertex_count():
 		var vert := _tool.get_vertex(i)
 		vert = vert * xform
 		_tool.set_vertex(i, vert)
-	
+
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var verts = []
@@ -120,23 +121,23 @@ func _recalc():
 				_tool.get_vertex_uv2(v1),
 				_tool.get_vertex_uv2(v2),
 			])
-	
+
 	verts.sort_custom(_comp)
-	
+
 	for i in verts:
 		st.set_color(_norm_to_col(i[3]))
-		
+
 		st.set_uv(i[4])
 		st.set_uv2(i[7])
 		st.add_vertex(i[0])
-		
+
 		st.set_uv(i[5])
 		st.set_uv2(i[8])
 		st.add_vertex(i[1])
-		
+
 		st.set_uv(i[6])
 		st.set_uv2(i[9])
 		st.add_vertex(i[2])
-	
+
 	mesh = st.commit()
 	mesh.surface_set_material(0, mat)

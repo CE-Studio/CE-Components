@@ -1,5 +1,6 @@
-extends RefCounted
+# Copyright 2026 CE-Studio: LGPL-3.0-only
 class_name Statics
+extends RefCounted
 ## A class providing static functions or variables useful to all scripts.
 
 
