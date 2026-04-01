@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://lq70ang68e5j"]
+[gd_scene format=3 uid="uid://lq70ang68e5j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dofx"]
 transparency = 1
@@ -7,5 +7,5 @@ albedo_color = Color(1, 0, 0, 0.31764707)
 [sub_resource type="BoxMesh" id="BoxMesh_ihxu1"]
 material = SubResource("StandardMaterial3D_6dofx")
 
-[node name="internalAabbDisplay" type="MeshInstance3D"]
+[node name="internalAabbDisplay" type="MeshInstance3D" unique_id=1305134716]
 mesh = SubResource("BoxMesh_ihxu1")
