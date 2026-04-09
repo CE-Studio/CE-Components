@@ -87,6 +87,8 @@ func _ready() -> void:
 		p.beat.connect(_beat.bind(i))
 		p.odd_beat.connect(_odd_beat.bind(i))
 		p.even_beat.connect(_even_beat.bind(i))
+	await get_tree().process_frame
+	await get_tree().process_frame
 	if players.size() > 0:
 		players[0].play.call_deferred()
 		players[0].volume_db = 0
