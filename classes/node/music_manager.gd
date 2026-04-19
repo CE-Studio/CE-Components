@@ -3,6 +3,13 @@ class_name MusicManager
 extends Node
 
 
+enum BeatMode {
+	EVERY,
+	ODD,
+	EVEN,
+}
+
+
 signal beat
 signal odd_beat
 signal even_beat
@@ -72,8 +79,12 @@ func _process(delta: float) -> void:
 		_fader -= (delta * 3.0)
 
 
+func _init() -> void:
+	if not is_instance_valid(instance):
+		instance = self
+
+
 func _ready() -> void:
-	instance = self
 	players = []
 	levels = []
 	for i in get_children():
