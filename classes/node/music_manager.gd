@@ -7,6 +7,7 @@ enum BeatMode {
 	EVERY,
 	ODD,
 	EVEN,
+	ALTERNATE,
 }
 
 
