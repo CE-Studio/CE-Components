@@ -11,7 +11,7 @@ static func get_node(path:NodePath) -> Node:
 	return Engine.get_main_loop().current_scene.get_node(path)
 
 
-## Takes an aprbitrary variant and tries to convert it to a number. Can return float, int, fallback or null.
+## Takes an arbitrary variant and tries to convert it to a number. Can return float, int, fallback or null.
 static func to_number(inp:Variant, fallback:Variant = null) -> Variant:
 	if inp is float:
 		return inp
