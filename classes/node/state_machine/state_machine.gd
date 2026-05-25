@@ -33,7 +33,11 @@ func _physics_process(delta:float) -> void:
 ## internal for transitions
 func _on_transtion_requested(goal_state:StringName) -> void:
 	current_state.exit()
-	current_state = _states.get(goal_state)
+	if goal_state in _states:
+		current_state = _states.get(goal_state)
+	else:
+		push_error("State not found: ", goal_state)
+		current_state = initial_state
 	current_state.enter()
 	current_state.time_in_state = 0.0
 

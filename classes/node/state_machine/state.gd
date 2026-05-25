@@ -26,6 +26,7 @@ func add_transition(target_state:StringName, condition:Callable) -> void:
 func check_transitions() -> void:
 	for rule in _transition_rules:
 		if (rule.condition.call() == true):
+			rule.run_exits()
 			request_transition(rule.target_state)
 
 
