@@ -25,13 +25,13 @@ func add_transition(target_state:StringName, condition:Callable) -> void:
 
 func check_transitions() -> void:
 	for rule in _transition_rules:
-		if (rule.Condition.call() == true):
-			request_transition(rule.TargetState)
+		if (rule.condition.call() == true):
+			request_transition(rule.target_state)
 
 
 func request_transition(target_state:StringName):
 	transition_requested.emit(target_state)
 
 
-func _ready() -> void:
+func state_ready() -> void:
 	set_up_transitions()

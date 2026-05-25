@@ -14,9 +14,10 @@ func _ready() -> void:
 	current_state = initial_state
 	for child in get_children():
 		if child is State:
-			_states[child.Name] = child
+			_states[child.name] = child
 			child.actor = actor
 			child.transition_requested.connect(_on_transtion_requested)
+			child.state_ready()
 	current_state.enter()
 
 
